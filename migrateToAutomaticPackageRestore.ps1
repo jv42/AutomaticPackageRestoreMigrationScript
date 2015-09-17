@@ -12,7 +12,7 @@ $listOfBadStuff = @(
 #######################
 # Delete NuGet.targets
 
-ls -Recurse -Exclude './packages/' -Include 'NuGet.exe','NuGet.targets' |
+ls -Recurse -Include 'NuGet.exe','NuGet.targets' |
   foreach { 
     remove-item $_ -recurse -force
     write-host deleted $_
