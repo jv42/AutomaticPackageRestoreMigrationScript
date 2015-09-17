@@ -12,7 +12,7 @@ $listOfBadStuff = @(
 #######################
 # Delete NuGet.targets
 
-ls -Recurse -Include 'NuGet.exe','NuGet.targets' |
+ls -Recurse -include 'NuGet.exe','NuGet.targets' |
   foreach { 
     remove-item $_ -recurse -force
     write-host deleted $_
@@ -23,6 +23,7 @@ ls -Recurse -Include 'NuGet.exe','NuGet.targets' |
 
 ls -Recurse -include *.csproj, *.sln, *.fsproj, *.vbproj, *.wixproj |
   foreach {
+    write-host looking at $_.Name
     $content = cat $_.FullName | Out-String
     $origContent = $content
     foreach($badStuff in $listOfBadStuff){
